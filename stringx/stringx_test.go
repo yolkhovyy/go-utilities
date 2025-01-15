@@ -1,6 +1,48 @@
-package stringex
+package stringx
 
-import "testing"
+import (
+	"testing"
+)
+
+func TestCapitalize(t *testing.T) {
+	type args struct {
+		in string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "empty",
+			args: args{
+				in: "",
+			},
+			want: "",
+		},
+		{
+			name: "lower",
+			args: args{
+				in: "lower",
+			},
+			want: "Lower",
+		},
+		{
+			name: "Upper",
+			args: args{
+				in: "Upper",
+			},
+			want: "Upper",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Capitalize(tt.args.in); got != tt.want {
+				t.Errorf("Capitalize() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
 
 func TestTrimSpaceToLower(t *testing.T) {
 	type args struct {
