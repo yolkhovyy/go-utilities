@@ -26,6 +26,12 @@ func New(configFile string, prefix string, envKeyPreplacer *strings.Replacer) Vi
 	return Viperx{Viper: vpr}
 }
 
+func (v Viperx) SetDefaults(defaults map[string]any) {
+	for key, value := range defaults {
+		v.SetDefault(key, value)
+	}
+}
+
 func (v Viperx) Load(config any) error {
 	if err := v.ReadInConfig(); err != nil {
 		return fmt.Errorf("read config: %w", err)
