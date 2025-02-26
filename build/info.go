@@ -4,7 +4,7 @@ import (
 	"runtime/debug"
 )
 
-type BuildInfo struct {
+type Info struct {
 	Commit  string
 	Time    string
 	Version string
@@ -15,9 +15,9 @@ const unknown = "unknown"
 //nolint:gochecknoglobals
 var tag = unknown
 
-// ReadBuildInfo extracts build metadata.
-func ReadBuildInfo() BuildInfo {
-	info := BuildInfo{
+// ReadInfo extracts build metadata.
+func ReadInfo() Info {
+	info := Info{
 		Commit:  unknown,
 		Time:    unknown,
 		Version: tag,
