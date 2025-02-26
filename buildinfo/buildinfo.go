@@ -1,10 +1,10 @@
-package info
+package buildinfo
 
 import (
 	"runtime/debug"
 )
 
-type Info struct {
+type Data struct {
 	Commit  string
 	Time    string
 	Version string
@@ -15,9 +15,9 @@ const unknown = "unknown"
 //nolint:gochecknoglobals
 var tag = unknown
 
-// ReadInfo extracts build metadata.
-func ReadInfo() Info {
-	info := Info{
+// ReadData extracts build metadata.
+func ReadData() Data {
+	info := Data{
 		Commit:  unknown,
 		Time:    unknown,
 		Version: tag,
