@@ -17,11 +17,11 @@ func New(configFile string, prefix string, envKeyPreplacer *strings.Replacer) Vi
 	vpr.SetEnvPrefix(prefix)
 	vpr.AutomaticEnv()
 
-	if envKeyPreplacer != nil {
-		vpr.SetEnvKeyReplacer(envKeyPreplacer)
-	} else {
-		vpr.SetEnvKeyReplacer(strings.NewReplacer(".", "_", "-", "_"))
+	if envKeyPreplacer == nil {
+		envKeyPreplacer = strings.NewReplacer(".", "_", "-", "_")
 	}
+
+	vpr.SetEnvKeyReplacer(envKeyPreplacer)
 
 	return Viperx{Viper: vpr}
 }
