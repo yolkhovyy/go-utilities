@@ -32,13 +32,13 @@ func (v Viperx) SetDefaults(defaults map[string]any) {
 	}
 }
 
-func (v Viperx) Load(config any) error {
+func (v Viperx) Load(config any, opts ...viper.DecoderConfigOption) error {
 	if err := v.ReadInConfig(); err != nil {
 		return fmt.Errorf("read config: %w", err)
 	}
 
-	if err := v.Unmarshal(config); err != nil {
-		return fmt.Errorf("unnmarshal: %w", err)
+	if err := v.Unmarshal(config, opts...); err != nil {
+		return fmt.Errorf("unmarshal: %w", err)
 	}
 
 	return nil
