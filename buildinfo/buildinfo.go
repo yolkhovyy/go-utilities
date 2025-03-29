@@ -13,14 +13,14 @@ type Data struct {
 const unknown = "unknown"
 
 //nolint:gochecknoglobals
-var tag = unknown
+var Version string
 
 // ReadData extracts build metadata.
 func ReadData() Data {
 	info := Data{
 		Commit:  unknown,
 		Time:    unknown,
-		Version: tag,
+		Version: Version,
 	}
 
 	if buildInfo, ok := debug.ReadBuildInfo(); ok {
